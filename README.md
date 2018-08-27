@@ -9,10 +9,10 @@
 |:------------------:| ---------------:|
 | package.json	     | 361	           |
 | server.js 	     | 996	           |
-| client.js	         | 905  	       |
+| client.js	         | 939  	       |
 | control.js	     | 475 	           |
-| render.js 	     | 729 	           |
-| Dino.js     	     | 985	           |
+| render.js 	     | 3314 	       |
+| Dino.js     	     | 1746	           |
 | index.html         | 546 	           |
 | dino.png    	     | 2433	           |
-| **Total:** 	     | `~7430` 	       |
+| **Total:** 	     | `~10'810` 	       |

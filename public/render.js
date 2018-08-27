@@ -9,19 +9,15 @@ function render() {
 function renderDinos() {
     let distance = me.distance / 10;
     let floor = 5;
-    let modes = [
-        {sx: 848, sy: 2, w: 43, h: 46},
-        {sx: 936, sy: 2, w: 43, h: 46},
-        {sx: 980, sy: 2, w: 43, h: 46}
+    let sxmodes = [
+        848, 936, 980
     ];
     let sx = 848, sy = 2, w = 43, h = 46;
     if (me.mode === 1) {
-        sx = modes[1].sx;
-        sy = modes[1].sy;
+        sx = sxmodes[1];
     }
     else if (me.mode === 2) {
-        sx = modes[2].sx;
-        sy = modes[2].sy;
+        sx = sxmodes[2];
     }
     if (me.north) {
         ctx.scale(-1, 1);
@@ -40,12 +36,10 @@ function renderDinos() {
         let dino = dinos[i];
         sx = 848; sy = 2;
         if (dino.mode === 1) {
-            sx = modes[1].sx;
-            sy = modes[1].sy;
+            sx = sxmodes[1];
         }
         else if (dino.mode === 2) {
-            sx = modes[2].sx;
-            sy = modes[2].sy;
+            sx = sxmodes[2];
         }
         distance = dino.distance / 10;
         if (dino.north) {
@@ -60,6 +54,12 @@ function renderDinos() {
             ctx.fillRect(me.x - dino.x + (c.width / 2 - dino.width / 4) + 10, c.height - dino.height - (dino.y / 2 * 1.2) - floor - 4, 22, 5);
         }
         ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.font = "20px Arial";
+        ctx.fillText(dino.name,  me.x - dino.x + (c.width / 2 - dino.width / 4), c.height - dino.height - (dino.y / 2 * 1.2) - distance - 30);
+        if (Date.now() - dino.messageTime <= 10000) {
+            ctx.font = "15px Arial";
+            ctx.fillText(dino.message,  me.x - dino.x + (c.width / 2 - dino.width / 4), c.height - dino.height - (dino.y / 2 * 1.2) - distance - 15);
+        }
     }
 }
 

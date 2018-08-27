@@ -7,11 +7,13 @@ class Dino {
         this.speed = 0;
         this.doublejump = true;
         this.bounce = 0;
-        this.distance = 0;
+        this.distance = 1;
         this.width = 43;
         this.height = 46;
         this.north = true;
         this.mode = 0;
+        this.message = this.randMessage();
+        this.messageTime = Date.now();
     }
 
     walk(dir) {
@@ -40,7 +42,7 @@ class Dino {
             this.walk(0);
         }
         if (this.speed !== 0) {
-            this.distance++;
+            this.distance += 2 / (this.distance / 6);
             if (lastanimation === null || Date.now() - lastanimation > 100) {
                 this.mode++;
                 lastanimation = Date.now();
@@ -70,5 +72,16 @@ class Dino {
             this.y = 0;
             this.bounce = 0;
         }
+    }
+
+    randMessage() {
+        let messages = [
+            "Hello there, my internet doesnt work!",
+            "Do you know why I cant play Fortnite?",
+            "LOL Minecraft is Offline",
+            "I was busy watching some 'educational' videos..",
+            "Merhabar, Bir döner lütfen"
+        ];
+        return messages[Math.floor(Math.random() * messages.length)];
     }
 }

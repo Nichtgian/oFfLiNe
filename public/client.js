@@ -6,6 +6,8 @@ let lastanimation = null;
 let c = document.getElementById("c");
 let ctx = c.getContext("2d");
 ctx.imageSmoothingEnabled = false;
+ctx.textAlign="center";
+ctx.font = "20px Arial";
 
 let asset = new Image();
 asset.src = "dino.png";
@@ -46,4 +48,15 @@ function cycle(timestamp) {
     cycleTime = timestamp;
 
     window.requestAnimationFrame(cycle);
+}
+
+function toInput() {
+    document.getElementById("in").style.display = "block";
+}
+
+function toGame() {
+    document.getElementById("hm").style.display = "none";
+    document.getElementById("in").style.display = "none";
+    document.getElementById("gm").style.display = "block";
+    me.name = document.getElementById("usr").value;
 }

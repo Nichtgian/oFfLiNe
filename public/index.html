@@ -6,13 +6,75 @@
     <style>
         #c {
             margin: 0 auto;
-            display: table;
+            position: fixed;
+            top: 0;
+        }
+        * {
+            font-family: sans-serif;
+        }
+        #hm, #in {
+            color: #2b2b2b;
+            font-size: 1em;
+            line-height: 1.55;
+            margin: 0 auto;
+            max-width: 600px;
+            padding-top: 100px;
+            width: 100%;
+        }
+        h1, .h1 {
+            color: #333;
+            font-size: 1.6em;
+            font-weight: normal;
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+        ul {
+            margin-top: 0;
+        }
+        .link {
+            color: rgb(17, 85, 204);
+        }
+        .error {
+            color: #646464;
+            font-size: .8em;
+        }
+        #in, #gm {
+            padding-top: 0;
+            display: none;
         }
     </style>
 </head>
 <body>
 
-<canvas id="c" width="800" height="450">shity brwser</canvas>
+<div id="hm">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABIAQMAAABvIyEEAAAABlBMVEUAAABTU1OoaSf/AAAAAXRSTlMAQObYZgAAAGxJREFUeF7tyMEJwkAQRuFf5ipMKxYQiJ3Z2nSwrWwBA0+DQZcdxEOueaePp9+dQZFB7GpUcURSVU66yVNFj6LFICatThZB6r/ko/pbRpUgilY0Cbw5sNmb9txGXUKyuH7eV25x39DtJXUNPQGJtWFV+BT/QAAAAABJRU5ErkJggg=="
+         alt="trex"/>
+    <h1>There is no Internet Connection</h1>
+    <span>Try:</span>
+    <ul>
+        <li>Checking the network cables, modem, and router</li>
+        <li>Reconnecting to Wi-Fu</li>
+        <li class="link" onclick="toInput();">Running Windows Network Diagnostics</li>
+    </ul>
+    <span class="error">ERR_INTERNET_DISCONNECTED</span>
+</div>
+
+<div id="in">
+    <p class="link">Your Internet doesnt work, time to meet some friends outside!</p>
+    <label for="usr">Username</label>
+    <input id="usr" type="text">
+    <button onclick="toGame();">Shut down my Computer!</button>
+</div>
+
+<div id="gm">
+    <p>Enjoy meeting some friends!</p>
+    <p>Enjoy ur hat grow!</p>
+    <p>Enjoy beeing outside!</p>
+    <p>Enjoy the wonderful wather!</p>
+    <p>Enjoy the fresh air!</p>
+    <span>But most important Enjoy beeing</span><span class="h1">"Offline"</span>
+    <canvas id="c" width="800" height="450">shity brwser</canvas>
+</div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
