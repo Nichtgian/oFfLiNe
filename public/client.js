@@ -1,10 +1,14 @@
 let me;
 let dinos = [];
 let cycleTime = Date.now();
+let lastanimation = null;
 
 let c = document.getElementById("c");
 let ctx = c.getContext("2d");
 ctx.imageSmoothingEnabled = false;
+
+let asset = new Image();
+asset.src = "dino.png";
 
 socket.on("seed", function(id) {
     init(id);
@@ -31,10 +35,6 @@ function update(dt) {
     me.move();
     me.fall();
     socket.emit("move", me);
-}
-
-function render() {
-    renderDinos();
 }
 
 function cycle(timestamp) {

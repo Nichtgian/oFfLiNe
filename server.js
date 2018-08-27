@@ -13,7 +13,7 @@ function cycle() {
 
 setInterval(function () {
     cycle();
-}, 50);
+}, 20);
 
 app.use(express.static("public"));
 
