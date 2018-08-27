@@ -4,37 +4,44 @@ const express = require("express");
 const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
-const Dino = require('./public/Dino');
 
-let dinos = [
-    new Dino("-100", -100),
-    new Dino("200", 200)
-];
+let dinos = [];
 
 function cycle() {
-    io.emit("dinos", {
-        dinos: dinos
-    });
+    io.emit("dinos", dinos);
 }
 
-setTimeout(function () {
+setInterval(function () {
+    console.log(dinos);
     cycle();
 }, 50);
 
 app.use(express.static("public"));
 
 io.on("connection", function(socket){
+    socket.emit("seed", socket.id);
+
     socket.on("born", function(dino) {
+        console.log(dino);
         dinos.push(dino);
     });
 
     socket.on("move", function(dino) {
-        dinos.shift();
-        dinos.push(dino);
+        let i = dinos.map(function(dino) {
+            return dino.id;
+        }).indexOf(dino.id);
+        if (i !== -1) {
+            dinos[i] = dino;
+        }
     });
 
     socket.on("disconnect", function(){
-        dinos.shift();
+        let i = dinos.map(function(dino) {
+            return dino.id;
+        }).indexOf(socket.id);
+        if (i !== -1) {
+            dinos.splice(i, 1);
+        }
     });
 });
 

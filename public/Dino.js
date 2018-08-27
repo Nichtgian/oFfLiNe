@@ -1,7 +1,7 @@
 class Dino {
-    constructor(name, x) {
+    constructor(id, name, x) {
         this.name = name;
-        this.id = Date.now();
+        this.id = id;
         this.x = x;
         this.y = 0;
         this.speed = 0;
@@ -29,7 +29,11 @@ class Dino {
             this.x = 500;
             this.walk(0);
         }
+        if (this.speed !== 0) {
+            this.distance++;
+        }
     }
+
 
     jump() {
         this.bounce = 10;
@@ -44,5 +48,3 @@ class Dino {
         }
     }
 }
-
-module.exports = Dino;
