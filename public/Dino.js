@@ -8,6 +8,7 @@ class Dino {
         this.bounce = 0;
         this.distance = 0;
         this.width = 50;
+        this.height = 50;
     }
 
     walk(dir) {
@@ -36,13 +37,13 @@ class Dino {
 
 
     jump() {
-        this.bounce = 10;
+        this.bounce = 20;
     }
 
     fall() {
         this.y += this.bounce;
         this.bounce -= 1;
-        if (this.y >= 0) {
+        if (this.y <= 0) {
             this.y = 0;
             this.bounce = 0;
         }

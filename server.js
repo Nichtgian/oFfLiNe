@@ -12,7 +12,6 @@ function cycle() {
 }
 
 setInterval(function () {
-    console.log(dinos);
     cycle();
 }, 50);
 
@@ -22,7 +21,6 @@ io.on("connection", function(socket){
     socket.emit("seed", socket.id);
 
     socket.on("born", function(dino) {
-        console.log(dino);
         dinos.push(dino);
     });
 
