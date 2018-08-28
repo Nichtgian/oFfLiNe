@@ -2,10 +2,12 @@ let me;
 let dinos = [];
 let cycleTime = Date.now();
 let lastanimation = null;
+let dclr = "#2b2b2b";
 
 let c = document.getElementById("c");
 let ctx = c.getContext("2d");
 ctx.imageSmoothingEnabled = false;
+ctx.fillStyle = dclr;
 ctx.textAlign="center";
 ctx.font = "20px Arial";
 
@@ -59,4 +61,11 @@ function toGame() {
     document.getElementById("in").style.display = "none";
     document.getElementById("gm").style.display = "block";
     me.name = document.getElementById("usr").value;
+    me.color = document.getElementById("clr").value;
+}
+
+function message() {
+    me.message = document.getElementById("msg").value;
+    me.messageTime = Date.now();
+    document.getElementById("msg").value = "";
 }

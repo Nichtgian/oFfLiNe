@@ -19,6 +19,7 @@ function renderDinos() {
     else if (me.mode === 2) {
         sx = sxmodes[2];
     }
+    ctx.fillStyle = me.color;
     if (me.north) {
         ctx.scale(-1, 1);
         ctx.drawImage(asset, sx, sy, w, h, (c.width / 2 - me.width / 2) * -1 - me.width, c.height - me.height - me.y / 2 - floor, me.width, me.height);
@@ -31,6 +32,11 @@ function renderDinos() {
         ctx.fillRect(c.width / 2 - me.width / 4 + 10, c.height - me.height - (me.y / 2 * 1.2) - floor - 4, 22, 5);
     }
     ctx.setTransform(1, 0, 0, 1, 0, 0);
+    if (Date.now() - me.messageTime <= 10000) {
+        ctx.fillStyle = dclr;
+        ctx.font = "15px Arial";
+        ctx.fillText(me.message,  c.width / 2, c.height - me.height - (me.y / 2 * 1.2) - distance - 15);
+    }
 
     for (let i = 0; i < dinos.length; i++) {
         let dino = dinos[i];
@@ -41,6 +47,7 @@ function renderDinos() {
         else if (dino.mode === 2) {
             sx = sxmodes[2];
         }
+        ctx.fillStyle = dino.color;
         distance = dino.distance / 10;
         if (dino.north) {
             ctx.scale(-1, 1);
@@ -54,6 +61,7 @@ function renderDinos() {
             ctx.fillRect(me.x - dino.x + (c.width / 2 - dino.width / 4) + 10, c.height - dino.height - (dino.y / 2 * 1.2) - floor - 4, 22, 5);
         }
         ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.fillStyle = dclr;
         ctx.font = "20px Arial";
         ctx.fillText(dino.name,  me.x - dino.x + (c.width / 2 - dino.width / 4), c.height - dino.height - (dino.y / 2 * 1.2) - distance - 30);
         if (Date.now() - dino.messageTime <= 10000) {

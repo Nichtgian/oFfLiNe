@@ -14,6 +14,7 @@ class Dino {
         this.mode = 0;
         this.message = this.randMessage();
         this.messageTime = Date.now();
+        this.color = "#2b2b2b";
     }
 
     walk(dir) {
