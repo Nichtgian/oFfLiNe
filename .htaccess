@@ -1,0 +1,3 @@
+Options -Indexes
+RewriteEngine On
+RewriteRule (.*) http://localhost:63235/$1 [P]

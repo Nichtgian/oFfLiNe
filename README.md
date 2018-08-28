@@ -1,6 +1,14 @@
 # "Offline"
 **"Offline"** Game for 2018 [js13kgames](http://js13kgames.com) game dev challenge.
 
+[<img src="files/img/start.gif">](http://offline.elnath.uberspace.de)
+
+*or*
+
+[Play Now!](http://offline.elnath.uberspace.de)
+
+***
+
 ![Offline Google Page](files/img/noConnection.png)
 
 ***
